@@ -1,0 +1,104 @@
+<div id="bar">
+  <div class="row">
+    <div class="large-16 column">
+      <div class="menu-centered">
+        <ul class="menu">
+          <li class="inactive">
+            <%= link_to 'HOME', root_path %>
+          </li>
+          <li class="inactive">
+            <%= link_to 'MOVIES', movies_path %>
+          </li>
+          <li class="inactive">
+            <%= link_to 'GENRES', genres_path %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row container">
+  <div class="large-12 columns">
+
+    <% if !notice.nil? %>
+        <div class="row row-buffer"></div>
+
+        <div class="row">
+          <div class="large-6 medium-6 small-6 columns">
+            <div class="callout primary">
+              <%= notice %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="row row-buffer"></div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="wallpaper-column">
+          <img class="wallpaper" src="../images/genreWallpaper.jpg">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1 class="title"><%= @genre.name %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 medium-12 small-12 columns genre-info">
+        <h4 class="info-key noselect">Description:</h4>
+        <p class="info-value">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+      </div>
+    </div>
+
+    <div class="row row-buffer"></div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h4 class="white noselect">Movies with the same genre:</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <% @genre.movies.each do |movie| %>
+      <div class="large-3 columns end">
+        <%= link_to movie do %>
+            <img class="movie-poster" src="../images/<%= movie.poster %>">
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="row row-buffer"></div>
+
+  </div>
+</div><!-- end container -->
+
+<div class="row row-buffer"></div>
+
+<div class="row">
+  <div class="large-12 colums">
+    <ul class="menu">
+      <li>
+        <%= link_to 'BACK', genres_path, {:class => 'back'} %>
+      </li>
+      <li>
+        <%= link_to 'EDIT GENRE', edit_genre_path(@genre), {:class => 'edit'} %>
+      </li>
+      <li>
+        <%= link_to 'DELETE GENRE', @genre, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row row-buffer"></div>
+
+<script>
+      $(document).foundation();
+</script>

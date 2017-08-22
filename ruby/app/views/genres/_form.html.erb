@@ -1,0 +1,47 @@
+<%= form_for(@genre) do |f| %>
+  <% if @genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+
+      <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="large-6 medium-6 small-12 columns">
+      <label>
+        <h2 class="label-text">Name</h2>
+          <%= f.text_field :name %>
+      </label>
+     </div>
+    <div class="large-12 columns">
+      <label>
+        <h2 class="label-text">Description</h2>
+        <%= f.text_area :description, {:rows => '10'} %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.submit 'Submit', {:class => 'button secondary large'} %>
+    </div>
+  </div>
+<% end %>
+</div>
+</div><!-- end container -->
+
+<div class="row row-buffer"></div>
+
+<div class="row">
+  <div class="large-12 colums">
+    <ul class="menu">
+      <li>
+        <%= link_to 'Back', genres_path %>
+      </li>
+    </ul>
+  </div>
+</div>

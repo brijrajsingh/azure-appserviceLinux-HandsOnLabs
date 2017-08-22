@@ -1,0 +1,89 @@
+
+<%= form_for(@movie) do |f| %>
+    <% if @movie.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @movie.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+      <div class="row">
+        <div class="large-6 medium-6 small-12 columns">
+          <label>
+            <h2 class="label-text">Title</h2>
+            <%= f.text_field :title %>
+          </label>
+        </div>
+        <div class="large-3 medium-3 small-6 columns">
+          <label>
+            <h2 class="label-text">Director</h2>
+            <%= f.text_field :director %>
+          </label>
+        </div>
+        <div class="large-3 medium-3 small-6 columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <label>
+                <h2 class="label-text">Duration</h2>
+              </label>
+            </div>
+            <div class="large-12 columns">
+              <div class="input-group">
+                <%= f.number_field :running_time, { :class => 'input-group-field text-center'} %>
+                <span class="input-group-label">Minutes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="large-12 columns">
+          <label>
+            <h2 class="label-text">Select Genre</h2>
+            <fieldset class="large-12 columns">
+              <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %>
+            </fieldset>
+          </label>
+        </div>
+        <div class="large-12 columns">
+          <label>
+            <h2 class="label-text">Description</h2>
+            <%= f.text_area :description, {:rows => '10'} %>
+          </label>
+        </div>
+        <div class="large-6 medium-6 small-12 columns">
+          <label>
+            <h2 class="label-text">Cover File Name</h2>
+            <%= f.text_field :poster %>
+          </label>
+        </div>
+        <div class="large-6 medium-6 small-12 columns">
+          <label>
+            <h2 class="label-text">Wallpaper File Name</h2>
+            <%= f.text_field :wallpaper %>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-4 columns">
+          <%= f.submit 'Submit', {:class => 'button secondary large'} %>
+        </div>
+      </div>
+<% end %>
+</div>
+</div><!-- end container -->
+
+
+<div class="row row-buffer"></div>
+
+<div class="row">
+  <div class="large-12 colums">
+    <ul class="menu">
+      <li>
+        <%= link_to 'Back', movies_path %>
+      </li>
+    </ul>
+  </div>
+</div>

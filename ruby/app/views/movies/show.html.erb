@@ -1,0 +1,127 @@
+<div id="bar">
+  <div class="row">
+    <div class="large-16 column">
+      <div class="menu-centered">
+        <ul class="menu">
+          <li class="inactive">
+            <%= link_to 'HOME', root_path %>
+          </li>
+          <li class="inactive">
+            <%= link_to 'MOVIES', movies_path %>
+          </li>
+          <li class="inactive">
+            <%= link_to 'GENRES', genres_path %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row container">
+  <div class="large-12 columns">
+
+    <% if !notice.nil? %>
+        <div class="row row-buffer"></div>
+
+        <div class="row">
+          <div class="large-6 medium-6 small-6 columns">
+            <div class="callout primary">
+              <%= notice %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="row row-buffer"></div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="wallpaper-column">
+          <img class="wallpaper" src="../images/<%= @movie.wallpaper %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="show-for-medium-only">
+        <div class="medium-4 medium-offset-8 columns cover-column-medium">
+          <img class="cover" src="../images/<%= @movie.poster %>">
+        </div>
+      </div>
+      <div class="hide-for-medium-only hide-for-small-only">
+        <div class="large-4 large-offset-8 columns cover-column-large">
+          <img class="cover" src="../images/<%= @movie.poster %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="row movie-info">
+      <div class="large-8 columns">
+        <div class="row">
+          <div class="large-12 columns">
+            <h1 class="title"><%= @movie.title %></h1>
+          </div>
+
+          <div class="large-12 columns">
+            <div class="row">
+              <div class="large-4 medium-4 small-4 columns">
+                <h4 class="info-key genre noselect">Running Time:</h4>
+                <p class="info-value"><%= @movie.running_time %> min</p>
+              </div>
+              <div class="large-4 medium-4 small-4 columns movie-info-col">
+                <h4 class="info-key genre noselect">Director:</h4>
+                <p class="info-value"><%= @movie.director %></p>
+              </div>
+              <div class="large-4 medium-4 small-4 columns movie-info-col">
+                <h4 class="info-key genre noselect">Rating:</h4>
+                <p class="info-value">
+                  <i class="fi-star"></i>
+                  <i class="fi-star"></i>
+                  <i class="fi-star"></i>
+                  <i class="fi-star"></i>
+                  <i class="fi-star empty-star"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="large-12 columns">
+            <h3 class="info-key genre">Genres:</h3>
+            <p class="info-value">
+              <% @movie.genres.each do |genre| %>
+              <%= link_to genre.name, genre_path(genre) %>,
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="large-12 columns">
+        <h3 class="info-key genre">Description:</h3>
+        <p class="description info-value"><%= @movie.description %></p>
+      </div>
+    </div>
+
+    <div class="row row-buffer"></div>
+
+  </div>
+</div><!-- end container -->
+
+<div class="row row-buffer"></div>
+
+<div class="row">
+  <div class="large-12 colums">
+    <ul class="menu">
+      <li>
+        <%= link_to 'BACK', movies_path, { :class => 'back'} %>
+      </li>
+      <li>
+        <%= link_to 'EDIT MOVIE', edit_movie_path(@movie), { :class => 'edit'} %>
+      </li>
+      <li>
+        <%= link_to 'DELETE MOVIE', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row row-buffer"></div>
