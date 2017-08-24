@@ -13,6 +13,11 @@ There are demos available for NodeJS, PHP, Python and Ruby on rails and Java.
 **NodeJS -** [https://github.com/maniSbindra/app-service-web-nodejs-get-started](https://github.com/maniSbindra/app-service-web-nodejs-get-started ) 
 
 
+**Java -** [https://github.com/brijrajsingh/azure-appserviceLinux-HandsOnLabs/tree/master/java](https://github.com/brijrajsingh/azure-appserviceLinux-HandsOnLabs/tree/master/java ) 
+
+
+
+
 
  
 
