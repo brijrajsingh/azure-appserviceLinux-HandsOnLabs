@@ -1,0 +1,13 @@
+﻿
+
+FROM reenu20/tomcatjava:8
+MAINTAINER Reenu
+
+COPY jstl-1.2.jar /usr/local/tomcat/lib/
+COPY taglibs.jar /usr/local/tomcat/lib/
+COPY mysql-connector-java-5.1.43-bin.jar /usr/local/tomcat/lib/
+COPY JavaOnAzureLinux.war /usr/local/tomcat/webapps/
+# Environment Variables
+ENV azure.mysql.url <Database URL>
+ENV azure.mysql.username <DB UserName>
+ENV azure.mysql.password <DB Password>
